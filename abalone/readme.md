@@ -1,6 +1,6 @@
 # Abalone
 
-Slug is a sequential interpreted programming language. It has a lexer, a recursive descent parser, a tree walking evaluator, an environment model with lexical scoping and closures. It is around a thousand lines of C. You can hold the entire thing in your head, which was always the point. Abalone is Slug running on an Nvidia GPU.
+[Slug](https://github.com/gaidardzhiev/slug) is a sequential interpreted programming language. It has a lexer, a recursive descent parser, a tree walking evaluator, an environment model with lexical scoping and closures. It is around a thousand lines of C. You can hold the entire thing in your head, which was always the point. Abalone is Slug running on an Nvidia GPU.
 
 That sentence contains a contradiction worth sitting with. An AST walking interpreter is about the most GPU hostile structure imaginable. Every node waits on the one before it. The evaluation order is fixed by the tree. The environment is a linked list of linked lists threaded through heap pointers. The call stack grows with every function call and shrinks with every return. None of this resembles what a GPU wants to do, which is the same simple operation repeated ten thousand times on ten thousand independent values simultaneously.
 
@@ -41,8 +41,7 @@ If the outputs match, the emulation layer is correct. If they do not, something 
 
 ## What Abalone Is Not
 
-It is not a general purpose GPU computing framework. It does not ask you to think in warps and blocks and shared memory. It does not expose any GPU primitive to the Slug programmer or to the Slug interpreter. The interpreter does not know it is running on a GPU. The language does not know. The scripts
-do not know.
+It is not a general purpose GPU computing framework. It does not ask you to think in warps and blocks and shared memory. It does not expose any GPU primitive to the Slug programmer or to the Slug interpreter. The interpreter does not know it is running on a GPU. The language does not know. The scripts do not know.
 
 It is not a demonstration that sequential interpreters belong on GPUs. They do not, in the sense that a single instance will always be slower. It is a demonstration that the boundary between what runs well on a CPU and what runs well on a GPU is not fixed by the nature of the computation. It is fixed by how many independent instances you have and whether their memory access patterns are diverse enough to keep the warp scheduler occupied. For an interpreter evaluating independent programs, they are.
 
@@ -80,4 +79,4 @@ The boundary of what the emulation supports is the boundary of what Abalone supp
 
 ## License
 
-Copyright (C) 2026 Ivan Gaydardzhiev. Licensed under GPL-3.0-only
+Copyright (C) 2025, 2026 Ivan Gaydardzhiev. Licensed under GPL-3.0-only; please see [COPYING](./COPYING) for details.
