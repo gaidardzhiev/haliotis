@@ -2,8 +2,6 @@
 
 The GPU was designed for one kind of problem. A large computation decomposed into thousands of identical subcomputations, each independent, each running the same instruction at the same moment on different data. Graphics. Matrix multiplication. Neural network inference. The architecture is optimized for this so completely that everything else feels like a misuse.
 
-Haliotis is a deliberate misuse.
-
 It takes sequential C programs, programs written for a single CPU, with malloc and printf and recursive function calls and linked list traversal, and runs thousands of them simultaneously on GPU hardware, each one isolated from the others, each one believing it owns the machine, while the GPU's own scheduler fills every idle cycle with useful work from a different program that would otherwise be stalling on a memory access.
 
 The result is not a faster sequential program. A single sequential C program will not run faster on a GPU than on a CPU. The result is something different: maximum hardware occupancy from programs that were never written to produce it, falling out naturally from the structure of the machine when you give it enough independent things to do.
