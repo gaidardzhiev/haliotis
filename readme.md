@@ -58,14 +58,6 @@ The less obvious application is isolation. A program that might crash, that migh
 The most interesting application is the one that is hardest to state cleanly. It is the demonstration that the boundary between what runs on a CPU and what runs on a GPU is not fixed by the nature of computation. It is fixed by the assumptions that execution environments make about the hardware beneath them. Haliotis changes those assumptions and the boundary moves.
 
 
-## Status
+## License
 
-The emulation layer is complete for the supported class of programs. The virtual filesystem, the arena allocator, the per-context output collection, the device side C standard library covering memory, string, IO, and math functions are implemented and validated. The cooperative scheduler is the current focus of development.
-
-What is not yet done is documented here rather than silently absent. The preparation tool that automates porting arbitrary C programs to the Haliotis compilation pipeline handles the common cases and requires manual annotation for the rest. Full libc coverage beyond what the reference implementation requires is in progress...
-
-
----
-
-*Ivan Gaydardzhiev*
-*2025, 2026*
+Copyright (C) 2026 Ivan Gaydardzhiev. Licensed under GPL-3.0-only
